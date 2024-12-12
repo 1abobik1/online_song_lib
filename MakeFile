@@ -1,0 +1,10 @@
+include .env
+
+server-run:
+	go run cmd/online_song_lib/main.go --config=.env
+
+mock-server-run:
+	go run cmd/mock_external_api/main.go
+
+migrate:
+	go run ./cmd/migrator/main.go --db-url="$(DATABASE_URL)" --migrations-path="./migrations"
