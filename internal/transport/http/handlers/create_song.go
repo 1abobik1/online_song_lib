@@ -7,7 +7,7 @@ import (
 	"github.com/1abobik1/online_song_lib/internal/transport/http/dto"
 )
 
-// POST /library
+
 func (h *Handlers) CreateSong(w http.ResponseWriter, r *http.Request) {
 	h.logger.Debug("CreateSong: start", "url", r.URL.String())
 

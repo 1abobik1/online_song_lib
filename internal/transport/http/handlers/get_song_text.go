@@ -4,6 +4,7 @@ import (
 	"net/http"
 )
 
+
 func (h *Handlers) GetSongText(w http.ResponseWriter, r *http.Request) {
 	h.logger.Debug("GetSongText: start", "url", r.URL.String())
 

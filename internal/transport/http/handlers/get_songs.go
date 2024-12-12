@@ -6,7 +6,7 @@ import (
 	"github.com/1abobik1/online_song_lib/internal/repository"
 )
 
-// GetSongs - обработчик для GET /library
+
 func (h *Handlers) GetSongs(w http.ResponseWriter, r *http.Request) {
 	h.logger.Debug("GetSongs: start", "url", r.URL.String())
 
