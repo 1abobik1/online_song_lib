@@ -8,3 +8,6 @@ mock-server-run:
 
 migrate:
 	go run ./cmd/migrator/main.go --db-url="$(DATABASE_URL)" --migrations-path="./migrations"
+
+create-db:
+	psql -U postgres -c "CREATE DATABASE online_song_lib_db;"
