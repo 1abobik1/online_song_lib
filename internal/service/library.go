@@ -29,7 +29,7 @@ func NewLibraryService(repo repository.SongRepository) *LibraryService {
 }
 
 func (s *LibraryService) GetSongs(ctx context.Context, filter repository.SongFilter) ([]models.Song, error) {
-	return s.repo.GetSongs(ctx , filter)
+	return s.repo.GetSongs(ctx, filter)
 }
 
 func (s *LibraryService) DeleteSong(ctx context.Context, id int) error {
@@ -63,7 +63,7 @@ func (s *LibraryService) GetSongTextByVerse(ctx context.Context, id, verse int) 
 
 func (s *LibraryService) AddSong(ctx context.Context, group, song string, externalAPIURL string) (*dto.SongResponse, error) {
 	// Вызов внешнего API
-	detail, err := s.fetchExternalSongDetail(group, song, externalAPIURL)
+	detail, err := s.fetchExternalSongDetail(ctx, group, song, externalAPIURL)
 	if err != nil {
 		return nil, fmt.Errorf("failed to fetch external details: %v", err)
 	}
@@ -89,9 +89,9 @@ func (s *LibraryService) AddSong(ctx context.Context, group, song string, extern
 	return newSong, nil
 }
 
-func (s *LibraryService) fetchExternalSongDetail(group, song, externalAPIURL string) (*ExternalSongDetail, error) {
+func (s *LibraryService) fetchExternalSongDetail(ctx context.Context, group, song, externalAPIURL string) (*ExternalSongDetail, error) {
 	// Формируем запрос к внешнему API
-	req, err := http.NewRequest("GET", externalAPIURL, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", externalAPIURL, nil)
 	if err != nil {
 		return nil, err
 	}
