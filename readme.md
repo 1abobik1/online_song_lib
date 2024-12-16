@@ -11,7 +11,7 @@ HTTP_SERVER_ADDRESS=localhost:8080
 EXTERNAL_API_URL=http://localhost:9090/info
 ```
 
-> **Важно**: Замените `your_password` на пароль пользователя `postgres`. Название базы данных (`online_song_lib_db`) оставьте без изменений, как в примере.
+> **Важно**: Замените `your_password` на пароль пользователя `postgres`. Название базы данных (`online_song_lib_db`) оставьте без изменений, как в примере. Также поменяйте (`EXTERNAL_API_URL`) свой внешний API URL
 
 ---
 
