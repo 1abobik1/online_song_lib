@@ -94,6 +94,7 @@ func (s *Storage) GetSongs(ctx context.Context, filter repository.SongFilter) ([
 	return songs, nil
 }
 
+// update postgres
 func (s *Storage) GetSongByID(ctx context.Context, id int) (*models.Song, error) {
 	row := s.db.QueryRowContext(ctx, `SELECT id, group_name, song_name, release_date, text, link, created_at, updated_at FROM songs WHERE id = $1`, id)
 
